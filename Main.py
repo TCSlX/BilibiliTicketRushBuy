@@ -34,11 +34,7 @@ time.sleep(10)
 #     except:
 #         print("无购买按钮")
 
-while True:
-    now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
-    print(now + "     " + TargetTime)
-    if now >= TargetTime:
-        break
+#刷新页面部分
 
 while True:
     try:
