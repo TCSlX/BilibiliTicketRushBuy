@@ -1,13 +1,13 @@
-import datetime
-import time
-from selenium.webdriver.common.by import By
+import datetime 
+import time 
+from selenium.webdriver.common.by import By 
 from selenium import webdriver
 
 # now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
 
-TargetTime = "2023-04-16 16:39:00.00000000"     #设置抢购时间
+TargetTime = "2023-04-16 16:39:00.00000000"  # 设置抢购时间
 WebDriver = webdriver.Chrome()
-WebDriver.get("https://show.bilibili.com/platform/detail.html?id=71212&from=pc_ticketlist")   #输入目标购买页面
+WebDriver.get("https://show.bilibili.com/platform/detail.html?id=71212&from=pc_ticketlist")  # 输入目标购买页面
 time.sleep(1)
 print("进入购票页面成功")
 WebDriver.find_element(By.CLASS_NAME, "nav-header-register").click()
@@ -40,23 +40,23 @@ while True:
         break
 
 while True:
-        try:
-            WebDriver.find_element(By.CLASS_NAME, "product-buy.enable").click()
+    try:
+        product_buy_buttons = WebDriver.find_elements(By.CLASS_NAME, "product-buy.enable")
+        if len(product_buy_buttons) > 0:
+            print("找到购买按钮")
+            product_buy_buttons[0].click()  # 点击第一个购买按钮
             # time.sleep(5)
             print("进入购买页面成功")
-        except:
-            print("无法点击购买")
+            break
+        else:
+            print("无购买按钮")
+    except:
+        print("无法点击购买")
 
-
-        try:
-            WebDriver.find_element(By.CLASS_NAME, "confirm-paybtn.active").click()
-            print("订单创建完成，请在一分钟内付款")
-            # time.sleep(60)
-        except:
-            print("无法点击创建订单")
-
-
-
-
-
-
+try:
+    confirm_paybtn = WebDriver.find_element(By.CLASS_NAME, "confirm-paybtn.active")
+    confirm_paybtn.click()
+    print("订单创建完成，请在一分钟内付款")
+    # time.sleep(60)
+except:
+    print("无法点击创建订单")
