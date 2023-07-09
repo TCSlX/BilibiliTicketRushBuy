@@ -11,8 +11,8 @@ WebDriver.get("https://show.bilibili.com/platform/detail.html?id=71212&from=pc_t
 time.sleep(1)
 print("进入购票页面成功")
 WebDriver.find_element(By.CLASS_NAME, "nav-header-register").click()
-print("请在10s内登录")
-time.sleep(10)
+print("请在25s内登录")
+time.sleep(25)
 
 # if(WebDriver.find_element(By.CLASS_NAME, "product-buy")):
 #     print("确认此页面为预购页面")
